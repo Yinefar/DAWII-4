@@ -19,6 +19,10 @@ public class ResilienceController {
 	public String getHttpBinError() {
 		return resService.callFromHttpBin();
 	}
+	@GetMapping("/jsonplace")
+	public String getJSONPlaceError() {
+		return resService.callFromJSONPlace();
+	}
 
 
 }

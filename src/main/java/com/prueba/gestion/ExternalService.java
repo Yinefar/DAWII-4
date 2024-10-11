@@ -14,11 +14,16 @@ public class ExternalService {
 
 	@CircuitBreaker(name = "prueba", fallbackMethod = "fallback")
 	//@Retry(name = "prueba", fallbackMethod = "fallback")
-
 	public String callFromHttpBin() {
 		return restTemplate.getForObject("http://httpbin.org/delay/15", String.class);
 		//return restTemplate.getForObject("http://httpbin.org/status/500", String.class);
 	}
+	@CircuitBreaker(name = "prueba", fallbackMethod = "fallback")
+	public String callFromJSONPlace() {
+		return restTemplate.getForObject("https://jsonplaceholder.typicode.com/posts", String.class);
+	}
+
+
 	public String fallback(Throwable t) {
 		return "Servicio temporalmente no disponible" + t.getMessage();
 	}
